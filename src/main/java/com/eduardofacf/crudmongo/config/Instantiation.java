@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.eduardofacf.crudmongo.domain.Register;
 import com.eduardofacf.crudmongo.domain.User;
+import com.eduardofacf.crudmongo.dto.ClientDTO;
 import com.eduardofacf.crudmongo.repository.RegisterRepository;
 import com.eduardofacf.crudmongo.repository.UserRepository;
 
@@ -35,10 +36,12 @@ public class Instantiation implements CommandLineRunner {
 		User maria = new User(null, "Maria Souza", "Female", "mariasouza@mail.com", sdf.parse("02/02/1972"), "Rio de Janeiro", "Brasil", "222.222.222-22");
 		User jose = new User(null, "Jose Campos", "Male", "josecampos@mail.com", sdf.parse("03/03/1973"), "Curitiba", "Brasil", "333.333.333-33");
 		
-		Register reg1 = new Register(null, joao, sdf.parse("01/01/2021"));
-		Register reg2 = new Register(null, maria, sdf.parse("02/02/2022"));
-		
 		userRepository.saveAll(Arrays.asList(joao, maria, jose));
+		
+		Register reg1 = new Register(null, new ClientDTO(joao), sdf.parse("01/01/2021"));
+		Register reg2 = new Register(null, new ClientDTO(maria), sdf.parse("02/02/2022"));
+		
+		
 		registerRepository.saveAll(Arrays.asList(reg1, reg2));
 		
 	}

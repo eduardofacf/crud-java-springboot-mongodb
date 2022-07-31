@@ -7,20 +7,22 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.eduardofacf.crudmongo.dto.ClientDTO;
+
 @Document
 public class Register implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
-	private User client;
+	private ClientDTO client;
 	private Date date;
 	
 	public Register() {
 		
 	}
 
-	public Register(String id, User client, Date date) {
+	public Register(String id, ClientDTO client, Date date) {
 		super();
 		this.id = id;
 		this.client = client;
@@ -35,11 +37,11 @@ public class Register implements Serializable {
 		this.id = id;
 	}
 	
-	public User getClient() {
+	public ClientDTO getClient() {
 		return client;
 	}
 
-	public void setClient(User client) {
+	public void setClient(ClientDTO client) {
 		this.client = client;
 	}
 
