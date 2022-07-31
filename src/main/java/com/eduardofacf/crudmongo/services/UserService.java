@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eduardofacf.crudmongo.domain.User;
+import com.eduardofacf.crudmongo.dto.UserDTO;
 import com.eduardofacf.crudmongo.repository.UserRepository;
 import com.eduardofacf.crudmongo.services.exception.ObjectNotFoundException;
 
@@ -25,4 +26,11 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getGender(), objDTO.getEmail(), objDTO.getBirth(), objDTO.getNaturalness(), objDTO.getNationality(), objDTO.getCpf());
+	}
 }
